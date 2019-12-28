@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 import { connect } from 'react-redux';
-import * as actionType from '../../store/actions'
+import * as actionCreator from '../../store/actions/actions'
 
 class Counter extends Component {
     state = {
@@ -60,12 +60,12 @@ const mapStateToProps = (state) => {
 
 const mapDispachToProps = dispach => {
     return {
-        onIncrementCounter: () => dispach({type: actionType.INCREMENT}),
-        onDecrementCounter: () => dispach({type: actionType.DECREMENT}),
-        onAddCounter: (val) => dispach({type: actionType.ADD, val: val}),
-        onSubCounter: (val) => dispach({type: actionType.SUBRACT, val: val}),
-        onStoreResult: (result) => dispach({type: actionType.STORE_RESULT, result: result}),
-        onDeleteResult: (id) => dispach({type: actionType.DELETE_RESULT, id: id})
+        onIncrementCounter: () => dispach(actionCreator.increment()),
+        onDecrementCounter: () => dispach(actionCreator.decrement()),
+        onAddCounter: (val) => dispach(actionCreator.add(val)),
+        onSubCounter: (val) => dispach(actionCreator.subtract(val)),
+        onStoreResult: (result) => dispach(actionCreator.storeResult(result)),
+        onDeleteResult: (id) => dispach(actionCreator.deleteResult(id))
     };
 }
 
